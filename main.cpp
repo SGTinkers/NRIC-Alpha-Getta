@@ -63,7 +63,7 @@ int main (int argc, char * const argv[]) {
 	printHeading.getHeading();
 	
 	// set the username to name
-	string name;
+	string name = "";
 	Name username;
 	username.setName(name);
 	
@@ -79,46 +79,50 @@ int main (int argc, char * const argv[]) {
 	division();
 	printFinalAns(); // this is for debugging purpose
 	
+	int alphabetNo;
+	
 	// Checks if the FINAL_ANS
 	// equals the case number.
 	switch (FINAL_ANS) {
 		case 1:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[10] << "\n" << endl;
+			alphabetNo = 10;
 			break;
 		case 0:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[9] << "\n" << endl;
+			alphabetNo = 9;
 			break;
 		case 2:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[8] << "\n" << endl;
+			alphabetNo = 8;
 			break;
 		case 3:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[7] << "\n" << endl;
+			alphabetNo = 7;
 			break;
 		case 4:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[6] << "\n" << endl;
+			alphabetNo = 6;
 			break;
 		case 5:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[5] << "\n" << endl;			
+			alphabetNo = 5;
 			break;
 		case 6:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[4] << "\n" << endl;
+			alphabetNo = 4;
 			break;
 		case 7:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[3] << "\n" << endl;
+			alphabetNo = 3;
 			break;
 		case 8:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[2] << "\n" << endl;
+			alphabetNo = 2;
 			break;
 		case 9:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[1] << "\n" << endl;
+			alphabetNo = 1;
 			break;
 		case 10:
-			cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[0] << "\n" << endl;
+			alphabetNo = 0;
 			break;
 		default:
 			cout << "Sorry, something went wrong. The program is terminated!\n" << endl;
-			return 0;
+			return 0; // test this out
 	}
+	
+	cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[alphabetNo] << "\n" << endl;
 	
     return 0;
 }
