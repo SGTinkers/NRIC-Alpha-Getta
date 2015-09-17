@@ -25,22 +25,23 @@ User::User() {
 // by the user. And store it in user[]
 void User::getInput() {
 	string input;
+	string tmpArr[7];
 	
 	cout << "Enter your NRIC(numbers only): ";
 	cin >> input;
 	
+	// input.length()
 	if (input.length() != SIZE) {
 		cout << "Invalid input! Length must be 7!\n";
 		getInput();
 	} else {
-		string tmpArr[7];
-	
+		// string, c_str(), atoi, int
 		for (int i = 0; i < SIZE; i++) {
+			// put in temp arr as string
 			tmpArr[i] = input[i];
 			
-			int tmp = atoi(tmpArr[i].c_str());
-			
-			user[i] = tmp;
+			// convert to int and store in user array
+			user[i] = atoi(tmpArr[i].c_str());
 		}
 	}
 
