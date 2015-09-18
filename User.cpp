@@ -11,7 +11,7 @@
 static int DEFAULT_NUMS[] = {2,7,6,5,4,3,2};
 static char alphabets[] = {'A','B','C','D','E','F','G','H','I','J','Z'};
 static int user[7], results[7];
-static int SIZE = 7;
+static const int SIZE = 7;
 
 User::User() {
 	divNum = 11;
@@ -25,26 +25,14 @@ User::User() {
 // by the user. And store it in user[]
 void User::getInput() {
 	string input;
-	string tmpArr[7];
 	
 	cout << "Enter your NRIC(numbers only): ";
 	cin >> input;
 	
-	// input.length()
-	if (input.length() != SIZE) {
-		cout << "Invalid input! Length must be 7!\n";
-		getInput();
-	} else {
-		// string, c_str(), atoi, int
-		for (int i = 0; i < SIZE; i++) {
-			// put in temp arr as string
-			tmpArr[i] = input[i];
-			
-			// convert to int and store in user array
-			user[i] = atoi(tmpArr[i].c_str());
-		}
+	for (int i = 0; i < SIZE; i++) {
+		user[i] = *(input.c_str() + i) - '0';
 	}
-
+	
 	cout << endl;
 }
 
@@ -74,7 +62,7 @@ void User::printMultiply() {
 // Sum altogether in results[]
 // store it in total
 void User::sum() {
-	for(int i=0; i<7; i++) {
+	for(int i=0; i<SIZE; i++) {
 		total += results[i];
 	}
 }
@@ -147,5 +135,5 @@ void User::checkAlphabet() {
 			break;
 	}
 	
-	cout << username.getName() << ", the last alphabet on your IC is: " << alphabets[alphabetNo] << "\n" << endl;
+	cout << username.getName() << "The last alphabet on your IC is: " << alphabets[alphabetNo] << "\n" << endl;
 }
