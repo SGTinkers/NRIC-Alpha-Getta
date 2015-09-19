@@ -22,7 +22,7 @@ class User {
 	public:
 		User();
 	
-		void getInput();
+		bool getInput();
 		void multiply();
 		void printMultiply();
 		void sum();

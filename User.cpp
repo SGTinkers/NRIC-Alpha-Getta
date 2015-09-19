@@ -23,17 +23,29 @@ User::User() {
 
 // Created this function to get every input
 // by the user. And store it in user[]
-void User::getInput() {
+bool User::getInput() {
 	string input;
 	
 	cout << "Enter your NRIC(numbers only): ";
 	cin >> input;
 	
-	for (int i = 0; i < SIZE; i++) {
-		user[i] = *(input.c_str() + i) - '0';
+	if (input.length() != SIZE) {
+		cout << "Input length must be 7!\n";
+		return false;
+	} else {
+		for (int i = 0; i < SIZE; i++) {
+			if (!isdigit(input[i])) {
+				cout << "Input must be a number!\n";
+				return false;
+			} else {
+				user[i] = *(input.c_str() + i) - '0';
+			}
+		}
 	}
 	
 	cout << endl;
+	
+	return true;
 }
 
 /***************************************/
@@ -96,43 +108,21 @@ void User::printFinalAns() {
 void User::checkAlphabet() {
 	// Checks if the FINAL_ANS
 	// equals the case number.
-	switch (FINAL_ANS) {
-		case 1:
-			alphabetNo = 10;
-			break;
-		case 0:
-			alphabetNo = 9;
-			break;
-		case 2:
-			alphabetNo = 8;
-			break;
-		case 3:
-			alphabetNo = 7;
-			break;
-		case 4:
-			alphabetNo = 6;
-			break;
-		case 5:
-			alphabetNo = 5;
-			break;
-		case 6:
-			alphabetNo = 4;
-			break;
-		case 7:
-			alphabetNo = 3;
-			break;
-		case 8:
-			alphabetNo = 2;
-			break;
-		case 9:
-			alphabetNo = 1;
-			break;
-		case 10:
-			alphabetNo = 0;
-			break;
-		default:
-			cout << "Sorry, something went wrong. The program is terminated!\n" << endl;
-			break;
+	
+	alphabetNo = -1; // start with -1 to allow easy flow with for loop
+	
+	for (int i = 10; i >= 0; i--) {
+		alphabetNo++;
+		
+		if (FINAL_ANS == i) {
+			if (FINAL_ANS == 1) {
+				alphabetNo = 10;
+			} else if (FINAL_ANS == 0) {
+				alphabetNo = 9;
+			}
+			
+			break; // break once match is found
+		}
 	}
 	
 	cout << username.getName() << "The last alphabet on your IC is: " << alphabets[alphabetNo] << "\n" << endl;

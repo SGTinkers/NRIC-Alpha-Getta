@@ -24,7 +24,11 @@ int main (int argc, char * const argv[]) {
 	
 	User user;
 	
-	user.getInput();
+	bool success = false;
+	while (!success) {
+		success = user.getInput();
+	}
+	
 	user.multiply();
 	user.printMultiply(); // this is for debugging purpose
 	
