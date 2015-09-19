@@ -10,6 +10,11 @@
 
 @interface ViewController : UIViewController
 
+@property IBOutlet UILabel *nric;
+@property IBOutlet UITextField *textField;
+@property IBOutlet UIButton *button;
+
+- (IBAction)getLetter:(id)sender;
 
 @end
 

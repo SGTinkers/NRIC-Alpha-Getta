@@ -14,6 +14,7 @@
 		AA1534E41BA695D800DBFDC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1534E31BA695D800DBFDC9 /* Images.xcassets */; };
 		AA1534E71BA695D800DBFDC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1534E51BA695D800DBFDC9 /* LaunchScreen.xib */; };
 		AA1534F31BA695D800DBFDC9 /* NRICAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1534F21BA695D800DBFDC9 /* NRICAppTests.m */; };
+		AA47AEF11BAD623D00179C04 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AA47AEF01BAD623D00179C04 /* User.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		AA1534EC1BA695D800DBFDC9 /* NRICAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NRICAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1534F11BA695D800DBFDC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1534F21BA695D800DBFDC9 /* NRICAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NRICAppTests.m; sourceTree = "<group>"; };
+		AA47AEEF1BAD623D00179C04 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		AA47AEF01BAD623D00179C04 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				AA1534DB1BA695D800DBFDC9 /* AppDelegate.m */,
 				AA1534DD1BA695D800DBFDC9 /* ViewController.h */,
 				AA1534DE1BA695D800DBFDC9 /* ViewController.m */,
+				AA47AEEF1BAD623D00179C04 /* User.h */,
+				AA47AEF01BAD623D00179C04 /* User.m */,
 				AA1534E01BA695D800DBFDC9 /* Main.storyboard */,
 				AA1534E31BA695D800DBFDC9 /* Images.xcassets */,
 				AA1534E51BA695D800DBFDC9 /* LaunchScreen.xib */,
@@ -163,7 +168,7 @@
 		AA1534CB1BA695D700DBFDC9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Muhd Mirza";
 				TargetAttributes = {
 					AA1534D21BA695D700DBFDC9 = {
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA47AEF11BAD623D00179C04 /* User.m in Sources */,
 				AA1534DF1BA695D800DBFDC9 /* ViewController.m in Sources */,
 				AA1534DC1BA695D800DBFDC9 /* AppDelegate.m in Sources */,
 				AA1534D91BA695D800DBFDC9 /* main.m in Sources */,
@@ -284,6 +290,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -349,6 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NRICApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mirza.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -359,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NRICApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mirza.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -377,6 +386,7 @@
 				);
 				INFOPLIST_FILE = NRICAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mirza.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NRICApp.app/NRICApp";
 			};
@@ -392,6 +402,7 @@
 				);
 				INFOPLIST_FILE = NRICAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mirza.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NRICApp.app/NRICApp";
 			};
@@ -416,6 +427,7 @@
 				AA1534F81BA695D800DBFDC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA1534F91BA695D800DBFDC9 /* Build configuration list for PBXNativeTarget "NRICAppTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +436,7 @@
 				AA1534FB1BA695D800DBFDC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

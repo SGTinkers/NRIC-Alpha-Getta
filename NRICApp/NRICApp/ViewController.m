@@ -7,21 +7,36 @@
 //
 
 #import "ViewController.h"
+#import "User.h"
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+	User *user;
+}
+
+@synthesize nric, textField, button;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+	user = [[User alloc]init];
+	
+	[self.nric setText:@"Enter your NRIC(numbers only)"];
+	[self.button setTitle:@"Get Letter" forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
+}
+
+- (IBAction)getLetter:(id)sender {
+	NSString *string = [[NSString alloc]init];;
+	
+	
 }
 
 @end
