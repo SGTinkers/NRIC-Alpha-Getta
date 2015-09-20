@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 @interface User : NSObject
 
-- (BOOL)getInput: (NSString*)input;
+- (BOOL)lengthIsCorrect: (NSString*)input;
 
 @end

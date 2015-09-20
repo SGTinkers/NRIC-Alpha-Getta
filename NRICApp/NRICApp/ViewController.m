@@ -34,9 +34,22 @@
 }
 
 - (IBAction)getLetter:(id)sender {
-	NSString *string = [[NSString alloc]init];;
+	NSString *string = [self.textField text];
+	NSLog(@"%@\n", string);
 	
+	if (![user lengthIsCorrect:string]) {
+		NSLog(@"Hello\n");
 	
+		UIAlertController *c = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Input length must be 7!" preferredStyle:UIAlertControllerStyleActionSheet];
+		UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^ (UIAlertAction*action) {
+			NSLog(@"OK\n");
+		}];
+		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+		[c addAction:okAction];
+		[c addAction:cancelAction];
+		
+		[self presentViewController:c animated:YES completion:nil];
+	}
 }
 
 @end

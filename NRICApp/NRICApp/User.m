@@ -13,7 +13,7 @@
 	//char alphabets[] = {'A','B','C','D','E','F','G','H','I','J','Z'};
 	//int user[7], results[7];
 	NSArray *default_nums, *alphabets, *user, *results;
-	const NSNumber *SIZE;
+	NSNumber *SIZE;
 	
 	NSNumber *divNum;
 	NSNumber *total;
@@ -26,8 +26,8 @@
 	if (self) {
 		default_nums = [NSArray arrayWithObjects:@2, @7, @6, @5, @4, @3, @2, nil];
 		alphabets = [NSArray arrayWithObjects:@'A',@'B',@'C',@'D',@'E',@'F',@'G',@'H',@'I',@'J',@'Z', nil];
-		user = [NSArray arrayWithObjects:nil count:7];
-		results = [NSArray arrayWithObjects:nil count:7];
+		user = [[NSArray alloc]init];
+		results = [[NSArray alloc]init];
 		
 		SIZE = [NSNumber numberWithInteger:7];
 		
@@ -39,13 +39,17 @@
 	return self;
 }
 
-- (BOOL)getInput: (NSString*)input {
+- (BOOL)lengthIsCorrect: (NSString*)input {
+	BOOL success = false;
+
 	NSNumber *inputSize = [NSNumber numberWithInteger:input.length];
 
 	if ([inputSize isEqualToNumber:SIZE]) {
+		NSLog(@"Tested\n");
 		//<< "Input length must be 7!\n";
-		return false;
-	} else {
+		success = true;
+	}
+	/*else {
 		for (int i = 0; i < SIZE; i++) {
 			if (!isdigit(input[i])) {
 				cout << "Input must be a number!\n";
@@ -55,6 +59,9 @@
 			}
 		}
 	}
+	*/
+	
+	return success;
 }
 
 @end
