@@ -24,7 +24,9 @@
 	
 	user = [[User alloc]init];
 	
-	[self.nric setText:@"Enter your NRIC(numbers only)"];
+	[self.nric setText:@"Enter your NRIC\n(numbers only)"];
+	[self.nric setNumberOfLines:0];
+	
 	[self.button setTitle:@"Get Letter" forState:UIControlStateNormal];
 }
 
@@ -35,20 +37,19 @@
 
 - (IBAction)getLetter:(id)sender {
 	NSString *string = [self.textField text];
-	NSLog(@"%@\n", string);
 	
 	if (![user lengthIsCorrect:string]) {
-		NSLog(@"Hello\n");
-	
-		UIAlertController *c = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Input length must be 7!" preferredStyle:UIAlertControllerStyleActionSheet];
+		UIAlertController *c = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Input length must be 7!" preferredStyle:UIAlertControllerStyleAlert];
 		UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^ (UIAlertAction*action) {
-			NSLog(@"OK\n");
+			self.textField.text = @"";
 		}];
-		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
 		[c addAction:okAction];
-		[c addAction:cancelAction];
 		
 		[self presentViewController:c animated:YES completion:nil];
+	} else {
+		if ([user isNumber]) {
+			NSLog(@"OK\n");
+		}
 	}
 }
 

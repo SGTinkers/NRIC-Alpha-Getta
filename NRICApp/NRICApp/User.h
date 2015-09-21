@@ -11,5 +11,7 @@
 @interface User : NSObject
 
 - (BOOL)lengthIsCorrect: (NSString*)input;
+- (BOOL)isNumber;
+- (void)multiply;
 
 @end
