@@ -47,9 +47,30 @@
 		
 		[self presentViewController:c animated:YES completion:nil];
 	} else {
+		NSString *msg = @"";
+	
 		if ([user isNumber]) {
-			NSLog(@"OK\n");
+			[user multiply];
+			[user sum];
+			[user division];
+			[user checkAlphabet];
+			
+			NSUInteger index = [user.alphabetNo intValue];
+			
+			char c = [[user.alphabets objectAtIndex:index] charValue];
+			
+			msg = [NSString stringWithFormat:@"Your last alphabet is %c", c];
+		} else {
+			msg = @"Numbers only!";
 		}
+		
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Hi!"
+																	   message:msg
+																preferredStyle:UIAlertControllerStyleAlert];
+		UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+		[alert addAction:action];
+		
+		[self presentViewController:alert animated:YES completion:nil];
 	}
 }
 

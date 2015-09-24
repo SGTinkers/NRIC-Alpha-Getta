@@ -9,7 +9,7 @@
 #import "User.h"
 
 @implementation User {
-	NSArray *default_nums, *alphabets;
+	NSArray *default_nums;
 	NSMutableArray *user, *results;
 	NSNumber *SIZE;
 	
@@ -18,16 +18,16 @@
 	const NSNumber *FINAL_ANS;
 	
 	NSString *inputString;
-	
-	NSNumber *alphabetNo;
 }
+
+@synthesize alphabets, alphabetNo;
 
 - (id)init {
 	self = [super init];
 	
 	if (self) {
 		default_nums = [NSArray arrayWithObjects:@2, @7, @6, @5, @4, @3, @2, nil];
-		alphabets = [NSArray arrayWithObjects:@'A',@'B',@'C',@'D',@'E',@'F',@'G',@'H',@'I',@'J',@'Z', nil];
+		self.alphabets = [NSArray arrayWithObjects:@'A',@'B',@'C',@'D',@'E',@'F',@'G',@'H',@'I',@'J',@'Z', nil];
 		user = [[NSMutableArray alloc]init];
 		results = [[NSMutableArray alloc]init];
 		
@@ -37,7 +37,7 @@
 		total = [NSNumber numberWithInteger:0];
 		FINAL_ANS = [NSNumber numberWithInteger:0];
 		
-		alphabetNo = [NSNumber numberWithInteger:-1];
+		self.alphabetNo = [NSNumber numberWithInteger:-1];
 	}
 	
 	return self;
@@ -57,33 +57,28 @@
 }
 
 - (BOOL)isNumber {
-	BOOL success = false;
+	BOOL success = true;
 	
 	NSCharacterSet *set = [NSCharacterSet decimalDigitCharacterSet];
 	
 	for (int i = 0; i < SIZE.intValue; i++) {
-		NSString *tmp = [inputString substringWithRange:NSMakeRange(i, 1)];
+		unichar c = [inputString characterAtIndex:i];
 	
-		if ([set characterIsMember:tmp]) {
+		if ([set characterIsMember:c]) {
+			NSString *tmp = [NSString stringWithFormat:@"%c", c];
 			[user addObject:tmp];
-			
-			success = true;
 		} else {
 			success = false;
 			break;
 		}
 	}
-
-	//cout << "Input must be a number!\n";
 	
-	 return success;
+	return success;
 }
 
 // Multiply user[] with DEFAULT_NUMS[]
 - (void)multiply {
 	for(int j=0; j<SIZE.integerValue; j++) {
-		//results[j] = user[j] * DEFAULT_NUMS[j];
-		
 		NSNumber *n = [user objectAtIndex:j];
 		NSNumber *n2 = [default_nums objectAtIndex:j];
 		NSNumber *s = [NSNumber numberWithInteger:[n integerValue] * [n2 integerValue]];
@@ -96,8 +91,6 @@
 // store it in total
 - (void)sum {
 	for(int i=0; i<SIZE.integerValue; i++) {
-		//total += [results objectAtIndex:i];
-		
 		NSNumber *n = [NSNumber numberWithInteger:[total integerValue] + [[results objectAtIndex:i] integerValue]];
 		total = n;
 	}
@@ -106,8 +99,6 @@
 // total divide by divNum to get the remainder
 // and store it in FINAL_ANS
 - (void)division {
-	//FINAL_ANS = total % divNum;
-	
 	NSNumber *n = [NSNumber numberWithInteger:[total integerValue] % [divNum integerValue]];
 	FINAL_ANS = n;
 }
@@ -118,21 +109,19 @@
 	
 	for (int i = 10; i >= 0; i--) {
 			// alphabetNo++;
-		NSNumber *n = [NSNumber numberWithInteger:[alphabetNo integerValue] + 1];
-		alphabetNo = n;
+		NSNumber *n = [NSNumber numberWithInteger:[self.alphabetNo integerValue] + 1];
+		self.alphabetNo = n;
 		
 		if ([FINAL_ANS isEqualToNumber:[NSNumber numberWithInt:i]]) {
 			if ([FINAL_ANS isEqualToNumber:[NSNumber numberWithInt:1]]) {
-				alphabetNo = [NSNumber numberWithInt:10];
+				self.alphabetNo = [NSNumber numberWithInt:10];
 			} else if ([FINAL_ANS isEqualToNumber:[NSNumber numberWithInt:0]]) {
-				alphabetNo = [NSNumber numberWithInt:9];
+				self.alphabetNo = [NSNumber numberWithInt:9];
 			}
 			
 			break; // break once match is found
 		}
 	}
-	
-	//cout << username.getName() << "The last alphabet on your IC is: " << alphabets[alphabetNo] << "\n" << endl;
 }
 
 @end

@@ -10,8 +10,14 @@
 
 @interface User : NSObject
 
+@property NSArray *alphabets;
+@property NSNumber *alphabetNo;
+
 - (BOOL)lengthIsCorrect: (NSString*)input;
 - (BOOL)isNumber;
 - (void)multiply;
+- (void)sum;
+- (void)division;
+- (void)checkAlphabet;
 
 @end
